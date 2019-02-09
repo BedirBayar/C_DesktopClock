@@ -16,10 +16,10 @@ int cooy(float angle){// dönen çubuklarýn uç noktasýnýn y koordinatýný bulur
 	return floor(300 - 200 * sin(angle));
 }
 int coox2(float angle) {  // dönen çubuklarýn uç noktasýnýn x koordinatýný bulur
-	return floor(300 + 180 * cos(angle));
+	return floor(300 + 176 * cos(angle));
 }
 int cooy2(float angle) {// dönen çubuklarýn uç noktasýnýn y koordinatýný bulur
-	return floor(300 - 180 * sin(angle));
+	return floor(300 - 176 * sin(angle));
 }
 int coox1(float angle){  // dönen akrep çubuðunun uç noktasýnýn x koordinatýný bulur
 	return floor(300 + 140 * cos(angle));
@@ -170,20 +170,23 @@ int main(){
 				
 				for (k = saniye; k < 60; k++){
 					setcolor(8);
-					outtextxy(10, 10, "Antiochus Digital, Bedir Bayar'a ait Antiochus Software oluþumu tarafýndan");
+					outtextxy(10, 10, "Antiochus Clock, Bedir Bayar'a ait Antiochus Software oluþumu tarafýndan");
 					outtextxy(10, 30, "BGI kullanýlarak kodlanan analog ve dijital özellikli saattir.");
-					circle(300, 300, 205);
-					circle(300, 300, 206);
-					circle(300, 300, 207);
-					setbkcolor(COLOR(30,30,30));
+					setlinestyle(0, 0x3333, 15);
+					circle(300, 300, 215);
+					setlinestyle(0, 0x3333, 1);
+					
+					setbkcolor(COLOR(90,60,60));
 					setfillstyle(EMPTY_FILL, 8);
 					fillellipse(300, 300, 180, 180);
+					setfillstyle(SOLID_FILL,COLOR(10,10,10));
+					fillellipse(300, 300, 20, 20);
 					//circle(300, 300, 180);
 					setcolor(7);
 					
 					outtextxy(270, 220, tarih);
 					outtextxy(250, 380, "A N T I O C H U S");
-					outtextxy(265, 410, "D I G I T A L");
+					outtextxy(275, 410, "C L O C K");
 					setcolor(15);
 					setbkcolor(0);
 					outtextxy(290, 102, "12");
@@ -199,15 +202,18 @@ int main(){
 					outtextxy(127,193,"10");
 					outtextxy(197,124,"11");
 
-					setcolor(14);
+					setcolor(COLOR(100,0,0));
+					setlinestyle(0,0x3333,3);
 					line(300, 300, coox(aci1*pi/180), cooy(aci1*pi/180));
-					setcolor(11);
+					setcolor(COLOR(10,10,10));
+					setlinestyle(0, 0x3333, 8);
 					line(300, 300, coox2(aci2*pi / 180), cooy2(aci2*pi / 180));
-					setcolor(12);
+					//setcolor(12);
 					line(300, 300, coox1(aci3*pi / 180), cooy1(aci3*pi / 180));
 					setcolor(15);
+					setlinestyle(0, 0x3333, 1);
 					aci1 -= 6;
-					printf("%d  %d  %d\n", s24, j, k);
+					
 
 					saatyaz(s24);
 					dakikayaz(j);
