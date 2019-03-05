@@ -16,16 +16,16 @@ int cooy(float angle){// dönen çubuklarýn uç noktasýnýn y koordinatýný bulur
 	return floor(300 - 200 * sin(angle));
 }
 int coox2(float angle) {  // dönen çubuklarýn uç noktasýnýn x koordinatýný bulur
-	return floor(300 + 176 * cos(angle));
+	return floor(300 + 174 * cos(angle));
 }
 int cooy2(float angle) {// dönen çubuklarýn uç noktasýnýn y koordinatýný bulur
-	return floor(300 - 176 * sin(angle));
+	return floor(300 - 174 * sin(angle));
 }
 int coox1(float angle){  // dönen akrep çubuðunun uç noktasýnýn x koordinatýný bulur
-	return floor(300 + 140 * cos(angle));
+	return floor(300 + 130 * cos(angle));
 }
 int cooy1(float angle){//dönen akrep çubuðunun uç noktasýnýn y koordinatýný bulur
-	return floor(300 - 140 * sin(angle));
+	return floor(300 - 130 * sin(angle));
 }
 void saatyaz(int sa){
 	int a = sa / 10;
@@ -112,16 +112,19 @@ void saniyeyaz(int sn){
 	}
 	
 }
+void update_wakeup() {
+
+}
 
 int main(){
-	int yil;
-	int ay;
-	int gun;
-	int saat ;//12 saat biçimindeki saati tutar
-	int dakika;
-	int saniye;
+	int yil=0;
+	int ay=0;
+	int gun=0;
+	int saat =0;//12 saat biçimindeki saati tutar
+	int dakika=0;
+	int saniye=0;
 	int i, j, k;
-	int s24;//24 saat biçimindeki saati tutar
+	int s24=0;//24 saat biçimindeki saati tutar
 	char cevap;
 
 	/*printf("\n\tSaati ayarlamak istiyor musunuz (E/H)?   ");
@@ -140,25 +143,26 @@ int main(){
 		s24 = 0;
 	}*/
 	time_t rawtime;
-	struct tm *timeinfo;
-	time(&rawtime);
-	timeinfo = localtime(&rawtime);
+		struct tm *timeinfo;
+		time(&rawtime);
+		timeinfo = localtime(&rawtime);
 
-	yil = 1900 + timeinfo->tm_year;
-	ay = 1+timeinfo->tm_mon;
-	gun = timeinfo->tm_mday;
+		yil = 1900 + timeinfo->tm_year;
+		ay = 1 + timeinfo->tm_mon;
+		gun = timeinfo->tm_mday;
 
-	s24 = timeinfo->tm_hour;
-	dakika = timeinfo->tm_min;
-	saniye = timeinfo->tm_sec;
-	saat = s24 % 12;
-	char tarih[11] = { (char)(48 + (gun / 10)), (char)(48 + (gun % 10)), '.' , (char)(48 + (ay / 10)), (char)(48 + (ay % 10)), '.', (char)(48 + (yil / 1000)) , (char)(48 + ((yil % 1000) / 100)),(char)(48 + ((yil % 100) / 10)), (char)(48 + (yil % 10)),'\0'};
+		s24 = timeinfo->tm_hour;
+		dakika = timeinfo->tm_min;
+		saniye = timeinfo->tm_sec;
+		saat = s24 % 12;
+	
 	initwindow(600, 750, "ANTIOCHUS DIGITAL");
 	
 	
 	float aci1, aci2,aci3;
 
 	while (1){
+		
 		
 		 aci1 = 90-saniye*6;//saniyelik açýsý (radyan)
 		 aci2 = 90-dakika*6;//yelkovan açýsý(radyan)
@@ -169,6 +173,11 @@ int main(){
 			for (j = dakika; j<60; j++){
 				
 				for (k = saniye; k < 60; k++){
+
+					
+					char tarih[11] = { (char)(48 + (gun / 10)), (char)(48 + (gun % 10)), '.' , (char)(48 + (ay / 10)), (char)(48 + (ay % 10)), '.', (char)(48 + (yil / 1000)) , (char)(48 + ((yil % 1000) / 100)),(char)(48 + ((yil % 100) / 10)), (char)(48 + (yil % 10)),'\0' };
+
+
 					setcolor(8);
 					outtextxy(10, 10, "Antiochus Clock, Bedir Bayar'a ait Antiochus Software oluþumu tarafýndan");
 					outtextxy(10, 30, "BGI kullanýlarak kodlanan analog ve dijital özellikli saattir.");
@@ -222,6 +231,7 @@ int main(){
 					swapbuffers();
 					delay(955);
 					cleardevice();
+					
 				}
 				aci2 -= 6;
 				if (j % 10 == 0){
